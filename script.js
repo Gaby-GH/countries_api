@@ -1,3 +1,59 @@
+async function Takedata(){
+    let data = await fetch("https://restcountries.com/v3.1/all")
+    let countries = await data.json()
+
+            
+    let n = 4
+    let container = undefined
+    let grid_country = document.querySelector("#grid_country")
+    let temp_container = document.querySelector("#temp_container")
+    let temp_pays = document.querySelector("#temp_pays")
+    for (let i of countries){
+
+        n ++
+        if (n > 4){
+            if (container != undefined){
+                grid_country.append(container)
+            }
+            container = temp_container.content.cloneNode(true)
+            n = 1
+        }
+
+        let pays = temp_pays.content.cloneNode(true)
+
+        let flag = pays.querySelector(".img_flag")
+        flag.src = i.flags.svg
+        let country_name = pays.querySelector(".country_name")
+        country_name.textContent = i.translations.fra.common
+        let stat_population = pays.querySelector(".stat_population")
+        stat_population.textContent = i.population
+        let stat_region = pays.querySelector(".stat_region")
+        stat_region.textContent = i.region
+        let stat_capital = pays.querySelector(".stat_capital")
+        stat_capital.textContent = i.capital
+
+        container.firstElementChild.append(pays)
+    }
+}
+
+Takedata()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Darkmode
+
 let darkmode = document.querySelector("#darkmode")
 
 async function ChangeTheme(){
