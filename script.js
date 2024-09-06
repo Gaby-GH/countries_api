@@ -1,3 +1,23 @@
+// Function to transfere information to the pays.html page
+
+async function TransfereInformations(id){
+    
+    localStorage.setItem("pays", id)
+}
+
+// Select all the country div and add to theme a listener
+
+/*async function PutListener(){
+    let countries = document.querySelectorAll(".country_detail")
+
+    countries.forEach(country => {
+        country.addEventListener("click", )//TransfereInformations(country))
+    })
+
+}*/
+
+
+// Display all the countries
 async function Takedata(){
     let data = await fetch("https://restcountries.com/v3.1/all")
     let countries = await data.json()
@@ -32,19 +52,13 @@ async function Takedata(){
         let stat_capital = pays.querySelector(".stat_capital")
         stat_capital.textContent = i.capital
 
+        pays.firstElementChild.id = i.translations.fra.common
+
         container.firstElementChild.append(pays)
     }
 }
 
 Takedata()
-
-
-
-
-
-
-
-
 
 
 

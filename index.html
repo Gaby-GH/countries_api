@@ -32,7 +32,7 @@
 
             <div id="div_region" class="color1">
                 <select name="filter" id="select_region" class="color1">
-                    <option value="">Filter by Region</option>
+                    <option value="">Filter by Region (all)</option>
                     <option value="Africa">Africa</option>
                     <option value="America">America</option>
                     <option value="Asia">Asia</option>
@@ -59,7 +59,7 @@
     </template>
 
     <template id="temp_pays">
-        <div class="div_pays color1">
+        <a href="pays.html" class="div_pays color1" Onclick="TransfereInformations(this.id)">
             <img src="" alt="" class="img_flag">
             <div class="country_detail">
                 <p class="country_name"></p>
@@ -67,7 +67,7 @@
                 <div class="div_stat_pays"><p class="title_stat">Region:</p><p class="stat_pays stat_region"></p></div>
                 <div class="div_stat_pays"><p class="title_stat">Capital:</p><p class="stat_pays stat_capital"></p></div>
             </div>
-        </div>
+        </a>
     </template>
 
 
