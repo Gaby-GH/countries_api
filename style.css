@@ -47,6 +47,10 @@ p{
     box-shadow: 0px -6px 8px black;
 }
 
+#p_where{
+    margin-left: 60px;
+}
+
 #darkmode{
     background-color: rgba(255, 255, 255, 0);
     border: none;
@@ -201,4 +205,40 @@ p{
 .stat_pays{
     font-weight: 300;
     font-size: 12px;
+}
+
+
+
+@media screen and (max-width: 375px){
+
+    #p_where{
+        font-size: 15px;
+        margin-left: 20px;
+    }
+
+    #darkmode{
+        margin-right: 20px;
+    }
+
+    #div_find{
+        flex-direction: column;
+        justify-content: baseline;
+        align-items: baseline;
+    }
+
+    #div_search{
+        margin-bottom: 20px;
+        width: 80vw;
+    }
+
+    .div_country_container{
+        flex-direction: column;
+        margin-bottom: 0px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .div_pays{
+        margin-bottom: 20px;
+    }
 }
