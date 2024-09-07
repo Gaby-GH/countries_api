@@ -19,7 +19,7 @@ title_pays.textContent = data.name
 
 async function GetInfos(){
 
-    let file = await fetch(`https://restcountries.com/v3.1/all?name`)  // <--- resoudre BUG
+    let file = await fetch(`https://restcountries.com/v3.1/all`)  // <--- resoudre BUG
     let countries = await file.json()
 
     /*console.log(`https://restcountries.com/v3.1/name/${data.key}`)
