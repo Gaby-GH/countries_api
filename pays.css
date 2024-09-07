@@ -1,3 +1,8 @@
+body{
+    display: flex;
+    justify-content: center;
+}
+
 p{
     color: white;
     font-family: "Nunito Sans", sans-serif;
@@ -7,6 +12,10 @@ p{
         "wdth" 100,
         "YTLC" 500;
     margin: 0%;
+}
+
+a{
+    text-decoration: none;
 }
 
 .color1{
@@ -35,7 +44,7 @@ p{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0px -6px 8px black;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.5);
 }
 
 #darkmode{
@@ -48,6 +57,7 @@ p{
 
 #div_main{
     margin-top: 120px;
+    width: 85vw;
 }
 
 #btn_back{
@@ -58,5 +68,81 @@ p{
     align-items: center;
     justify-content: center;
     border: 0px;
-    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.516);
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+#div_1{
+    margin-bottom: 60px;
+}
+
+#div_2{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#div_detail{
+    width: 46%;
+}
+
+#div_country_name{
+    margin-bottom: 25px;
+}
+
+#p_country_name{
+    font-weight: 800;
+    font-size: 24px;
+}
+
+#div_info{
+    display: flex;
+    flex-direction: row;
+}
+
+#div_info_1{
+    margin-right: 100px;
+}
+
+.div_p{
+    margin-bottom: 6px;
+    display: flex;
+    flex-direction: row;
+}
+
+.info_title{
+    font-weight: 600;
+    margin-right: 4px;
+    font-size: 12px;
+}
+
+.p_info{
+    font-weight: 300;
+    font-size: 12px;
+}
+
+#div_border{
+    margin-top: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#p_border{
+    font-weight: 600;
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+.btn_border{
+    margin-right: 8px;
+    border: 0px;
+    padding: 6px 20px 6px 20px;
+    border-radius: 3px;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+.p_country_border{
+    font-weight: 300;
 }

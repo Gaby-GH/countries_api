@@ -1,8 +1,19 @@
 // Function to transfere information to the pays.html page
 
 async function TransfereInformations(id){
+
+    let key = document.querySelector(`#${id}`).firstElementChild.id
+
+    let data = {
+        "name": id,
+        "flag": document.querySelector(`#${id}`).firstElementChild.src,
+        "key": key
+    }
+
+    localStorage.setItem("CountryData", JSON.stringify(data))
     
-    localStorage.setItem("pays", id)
+    /*localStorage.setItem("pays", id)
+    localStorage.setItem("flag", )*/
 }
 
 // Select all the country div and add to theme a listener
@@ -53,6 +64,7 @@ async function Takedata(){
         stat_capital.textContent = i.capital
 
         pays.firstElementChild.id = i.translations.fra.common
+        pays.firstElementChild.firstElementChild.id = i.name.common
 
         container.firstElementChild.append(pays)
     }
