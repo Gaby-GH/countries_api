@@ -4,35 +4,20 @@ async function TransfereInformations(id){
 
     let key = document.querySelector(`#${id}`).firstElementChild.id
 
-    let data = {
-        "name": id,
-        "flag": document.querySelector(`#${id}`).firstElementChild.src,
-        "key": key
+    for (let i of database){
+        if (i.name.common == key){
+            localStorage.setItem("InfosPays", JSON.stringify(i))
+        }
     }
-
-    localStorage.setItem("CountryData", JSON.stringify(data))
-    
-    /*localStorage.setItem("pays", id)
-    localStorage.setItem("flag", )*/
 }
-
-// Select all the country div and add to theme a listener
-
-/*async function PutListener(){
-    let countries = document.querySelectorAll(".country_detail")
-
-    countries.forEach(country => {
-        country.addEventListener("click", )//TransfereInformations(country))
-    })
-
-}*/
 
 
 // Display all the countries
+
+let database = []
 async function Takedata(){
     let data = await fetch("https://restcountries.com/v3.1/all")
     let countries = await data.json()
-
             
     let n = 4
     let container = undefined
@@ -67,7 +52,13 @@ async function Takedata(){
         pays.firstElementChild.firstElementChild.id = i.name.common
 
         container.firstElementChild.append(pays)
+
+        //
+
+        database.push(i)
     }
+
+    console.log(database)
 }
 
 Takedata()
