@@ -129,6 +129,45 @@ async function DisplayCountry(data){
 
     // Borders Country
 
+    async function SearchBorders(tag) {
+        let response = await fetch(`https://restcountries.com/v3.1/alpha/${tag}`)
+        let dico_pays = await response.json()
+
+        return dico_pays[0].name.common
+    }
+
+    async function TransfereInformations(key){
+        localStorage.setItem("country", key)    // Finir avec le probleme de transfere d'info
+    }                                           // puis finir avec barre de recherche et 
+                                                // pour selector voir sur le site de l'api 
+    async function DisplayBorders(list_borders){
+        let div_border = document.querySelector("#div_border")
+        let temp_border = document.querySelector("#temp_btn_border")
+
+        for (let k of list_borders){
+            let btn_border = temp_border.content.cloneNode(true)
+            btn_border.querySelector(".p_country_border").textContent = k
+            btn_border.Onclick = TransfereInformations()
+
+            div_border.append(btn_border)
+            div_border.lastElementChild.id = k
+        }
+
+    }
+
+    if ("borders" in data){
+        
+        let borders_tag = data.borders
+        let borders = []
+
+        for (let tag_name of borders_tag){
+            borders.push(await SearchBorders(tag_name) )
+        }
+        console.log(borders)
+
+        DisplayBorders(borders)
+    }
+
 }
 
 GetCountry(NameCountry)
