@@ -62,19 +62,76 @@ Takedata()
 
 // Research and selector
 
+// Research
 let div_search = document.querySelector("#div_search")
+let input_search = document.querySelector("#input_search")
+let btn_search = document.querySelector("#btn_search")
 
-div_search.addEventListener("click", () => {
+async function Research(){
+
+    let result = [...DataBase]
+
+    if (input_search.value.length != 0){
+
+        for (let y of result){
+            let common_name = y.translations.fra.common.toLowerCase()
+
+            for (let z of input_search.value){
+                if (!common_name.includes(z)){
+                    console.log(common_name)
+                    let index = result.indexOf(y)
+                    result.splice(index, 1)
+                }
+            }
+        }
+
+        console.log("research", result)
+    }
 
 
-    console.log(DataBase)
-
-
+    //console.log(DataBase)
 
     // Utiliser variable Database pour faire le barre debrecherche
 
-// finir avec barre de recherche et
-// pour selector voir sur le site de l'api 
+    // finir avec barre de recherche et
+    // pour selector voir sur le site de l'api 
+}
+
+btn_search.addEventListener("click", Research)
+
+div_search.addEventListener("keydown", () => {
+
+
+    
+})
+
+// Selector
+
+let selector = document.querySelector("#select_region")
+
+async function FilterByRegion(region){
+
+    let result = []
+
+    for (let i of DataBase){
+        if (i.region == region){
+            result.push(i)
+        }
+    }
+
+    let grid_country = document.querySelector("#grid_country")
+    grid_country.innerHTML = ""
+
+    ////// FINIR HERE AFFICHER LES PAYS DE RESULT + DEVELOPPER UN PLAN AVANT DE CODER --> GAIN DE TEMPS DE BZ
+}
+
+selector.addEventListener("click", () => {
+
+    if (selector.value != "all"){
+        FilterByRegion(selector.value)
+    }else{
+        // Afficher menu de base avec takedata
+    }
 })
 
 
@@ -83,7 +140,11 @@ div_search.addEventListener("click", () => {
 
 
 
+
 // Darkmode
+
+
+// Pour darkmode utiliser javascript et les classes
 
 let darkmode = document.querySelector("#darkmode")
 
