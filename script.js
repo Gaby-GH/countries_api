@@ -3,13 +3,10 @@
 async function TransfereInformations(id){
 
     let key = document.querySelector(`#${id}`).firstElementChild.id
-
-    for (let i of database){
-        if (i.name.common == key){
-            localStorage.setItem("InfosPays", JSON.stringify(i))
-        }
-    }
+    localStorage.setItem("country", key)
 }
+
+let DataBase = undefined
 
 
 // Display all the countries
@@ -18,6 +15,8 @@ let database = []
 async function Takedata(){
     let data = await fetch("https://restcountries.com/v3.1/all")
     let countries = await data.json()
+    DataBase = [...countries]
+    console.log(DataBase)
             
     let n = 4
     let container = undefined
@@ -57,11 +56,26 @@ async function Takedata(){
 
         database.push(i)
     }
-
-    console.log(database)
 }
 
 Takedata()
+
+// Research and selector
+
+let div_search = document.querySelector("#div_search")
+
+div_search.addEventListener("click", () => {
+
+
+    console.log(DataBase)
+
+
+
+    // Utiliser variable Database pour faire le barre debrecherche
+
+// finir avec barre de recherche et
+// pour selector voir sur le site de l'api 
+})
 
 
 
@@ -86,15 +100,4 @@ async function ChangeTheme(){
 
 darkmode.addEventListener("click", ChangeTheme)
 
-/**let area = document.querySelector("#slt")
 
-async function Takedata(){
-    const l = await fetch("https://restcountries.com/v3.1/name/france")
-    const data = await l.json()
-    console.log(data)
-
-    console.log(data[0].flags.png)
-    area.setAttribute("src", `${data[0].flags.png}`)
-}
-
-Takedata() */
