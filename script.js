@@ -62,6 +62,50 @@ Takedata()
 
 // Research and selector
 
+async function DisplayCountries(countries){
+
+    let grid_country = document.querySelector("#grid_country")
+    grid_country.innerHTML = ""
+
+    let temp_container = document.querySelector("#temp_container")
+    let temp_country = document.querySelector("#temp_pays")
+
+
+    let container = undefined
+    n = 4
+    for (let i of countries){
+
+        n++
+
+        if (n > 4){
+            if (container != undefined){
+                grid_country.append(container)
+            }
+
+            container = temp_container.content.cloneNode(true)
+            n = 1
+        }
+
+        let pays = temp_country.content.cloneNode(true)
+
+        let flag = pays.querySelector(".img_flag")
+        flag.src = i.flags.svg
+        let country_name = pays.querySelector(".country_name")
+        country_name.textContent = i.translations.fra.common
+        let stat_population = pays.querySelector(".stat_population")
+        stat_population.textContent = i.population
+        let stat_region = pays.querySelector(".stat_region")
+        stat_region.textContent = i.region
+        let stat_capital = pays.querySelector(".stat_capital")
+        stat_capital.textContent = i.capital
+
+        pays.firstElementChild.id = i.translations.fra.common
+        pays.firstElementChild.firstElementChild.id = i.name.common
+
+        container.firstElementChild.append(pays)
+    }
+}
+
 // Research
 let div_search = document.querySelector("#div_search")
 let input_search = document.querySelector("#input_search")
@@ -70,40 +114,37 @@ let btn_search = document.querySelector("#btn_search")
 async function Research(){
 
     let result = [...DataBase]
+    let ResearchWord = input_search.value.toLowerCase()
 
-    if (input_search.value.length != 0){
+    for (let i of DataBase){
+        
+        let country_name = i.translations.fra.common.toLowerCase()
+        let index = 0
 
-        for (let y of result){
-            let common_name = y.translations.fra.common.toLowerCase()
-
-            for (let z of input_search.value){
-                if (!common_name.includes(z)){
-                    console.log(common_name)
-                    let index = result.indexOf(y)
-                    result.splice(index, 1)
-                }
+        for (let y of ResearchWord){
+            if (country_name.includes(y)){
+                index++
             }
         }
 
-        console.log("research", result)
+        if (index < ResearchWord.length){
+            let index = result.indexOf(i)
+            result.splice(index, 1)
+        }
     }
 
-
-    //console.log(DataBase)
-
-    // Utiliser variable Database pour faire le barre debrecherche
-
-    // finir avec barre de recherche et
-    // pour selector voir sur le site de l'api 
+    DisplayCountries(result)
 }
 
 btn_search.addEventListener("click", Research)
 
-div_search.addEventListener("keydown", () => {
+// Faire avec la touche entree
+
+/*window.addEventListener("keydown", () => {
 
 
     
-})
+})*/
 
 // Selector
 
@@ -119,10 +160,7 @@ async function FilterByRegion(region){
         }
     }
 
-    let grid_country = document.querySelector("#grid_country")
-    grid_country.innerHTML = ""
-
-    ////// FINIR HERE AFFICHER LES PAYS DE RESULT + DEVELOPPER UN PLAN AVANT DE CODER --> GAIN DE TEMPS DE BZ
+    DisplayCountries(result)
 }
 
 selector.addEventListener("click", () => {
@@ -130,7 +168,7 @@ selector.addEventListener("click", () => {
     if (selector.value != "all"){
         FilterByRegion(selector.value)
     }else{
-        // Afficher menu de base avec takedata
+        DisplayCountries(DataBase)
     }
 })
 
