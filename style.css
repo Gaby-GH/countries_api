@@ -27,12 +27,20 @@ p{
     font-weight: 600;
 }
 
-.color1{
+.colorAB{
     background-color: hsl(209, 23%, 22%);
 }
 
-.color2{
+.colorBB{
     background-color: hsl(207, 26%, 17%);
+}
+
+.colorAW{
+    background-color: white;
+}
+
+.colorBW{
+    background-color: hsl(0, 0%, 98%);
 }
 
 #barre{

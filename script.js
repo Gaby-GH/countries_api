@@ -103,6 +103,12 @@ async function DisplayCountries(countries){
         pays.firstElementChild.firstElementChild.id = i.name.common
 
         container.firstElementChild.append(pays)
+
+
+        // Si element dernier de la liste ajouter le container
+        if (countries.length == countries.indexOf(i) + 1){
+            grid_country.append(container)
+        }
     }
 }
 
@@ -113,25 +119,23 @@ let btn_search = document.querySelector("#btn_search")
 
 async function Research(){
 
-    let result = [...DataBase]
+    let result = []
     let ResearchWord = input_search.value.toLowerCase()
 
-    for (let i of DataBase){
+    if (ResearchWord != ""){
+        for (let i of DataBase){
         
-        let country_name = i.translations.fra.common.toLowerCase()
-        let index = 0
-
-        for (let y of ResearchWord){
-            if (country_name.includes(y)){
-                index++
-            }
+            let country_name = i.translations.fra.common.toLowerCase()
+            
+            if (country_name.includes(ResearchWord)){
+                result.push(i)
+            }    
         }
-
-        if (index < ResearchWord.length){
-            let index = result.indexOf(i)
-            result.splice(index, 1)
-        }
+    }else{
+        result = [...DataBase]
     }
+
+    console.log(result)
 
     DisplayCountries(result)
 }
@@ -140,11 +144,11 @@ btn_search.addEventListener("click", Research)
 
 // Faire avec la touche entree
 
-/*window.addEventListener("keydown", () => {
-
-
-    
-})*/
+document.addEventListener("keydown", (e) => {
+    if (e.key == "Enter" && input_search.value != ""){
+        Research()
+    }
+})
 
 // Selector
 
@@ -172,31 +176,44 @@ selector.addEventListener("click", () => {
     }
 })
 
-
-
-
-
-
-
-
 // Darkmode
 
 
 // Pour darkmode utiliser javascript et les classes
 
+
+// Finir dark et light mode (reprendre le travail deja commence, enlver les commentaires)
+// puis faire la version pour tel
+
+
+/*
 let darkmode = document.querySelector("#darkmode")
+let color = "B"
+
 
 async function ChangeTheme(){
 
-    let color1 = document.querySelectorAll(".color1")
-    let color2 = document.querySelectorAll(".color2")
+    if (color == "B"){
+        let colorAB = document.querySelectorAll(".colorAB")
+        let colorBB = document.querySelectorAll(".colorBB")
+        let p = document.querySelector("p")
 
-    color1.forEach(elem => {
-        elem.style.backgroundColor = "white"  // Completer le light/dark mode
-    })
+        colorAB.forEach((element) => {
+            element.classList.remove(".colorAW")
+            element.classList.remove(".colorAB")
+        })
+
+
+    }else if (color == "W"){
+        let colorAW = document.querySelectorAll(".colorAW")
+        let colorBW = document.querySelectorAll(".colorBW")
+        let p = document.querySelector("p")
+
+    }
+    
 
 }
 
-darkmode.addEventListener("click", ChangeTheme)
+darkmode.addEventListener("click", ChangeTheme)*/
 
 
