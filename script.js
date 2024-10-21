@@ -102,6 +102,17 @@ async function DisplayCountries(countries){
         pays.firstElementChild.id = i.translations.fra.common
         pays.firstElementChild.firstElementChild.id = i.name.common
 
+        // Verifier theme couleur avant ajouter
+        console.log(pays)
+        if (color == "W"){
+            pays.firstElementChild.classList.remove("colorAB")
+            pays.firstElementChild.classList.add("colorAW")
+
+            pays.querySelectorAll("p").forEach((element) => {
+                element.style.color = "black"
+            })
+        }
+
         container.firstElementChild.append(pays)
 
 
@@ -186,34 +197,83 @@ selector.addEventListener("click", () => {
 // puis faire la version pour tel
 
 
-/*
+
 let darkmode = document.querySelector("#darkmode")
 let color = "B"
-
 
 async function ChangeTheme(){
 
     if (color == "B"){
         let colorAB = document.querySelectorAll(".colorAB")
         let colorBB = document.querySelectorAll(".colorBB")
-        let p = document.querySelector("p")
+        let p = document.querySelectorAll("p")
 
-        colorAB.forEach((element) => {
-            element.classList.remove(".colorAW")
-            element.classList.remove(".colorAB")
+        document.querySelector("#input_search").classList.add("placeholderW")
+        document.querySelector("#input_search").classList.remove("placeholderB")
+
+        document.querySelectorAll(".svg").forEach((element) => {
+            console.log(element.attributes[5].value)
+            element.attributes[5].value = "#000000"
         })
 
+        document.querySelectorAll("option").forEach((element) => {
+            element.style.color = "black"
+        })
+
+        colorAB.forEach((element) => {
+            element.classList.add("colorAW")
+            element.classList.remove("colorAB")
+        })
+
+        colorBB.forEach((element) => {
+            element.classList.add("colorBW")
+            element.classList.remove("colorBB")
+        })
+
+        p.forEach((element) => {
+            element.style.color = "black"
+        })
+
+        color = "W"
 
     }else if (color == "W"){
         let colorAW = document.querySelectorAll(".colorAW")
         let colorBW = document.querySelectorAll(".colorBW")
-        let p = document.querySelector("p")
+        let p = document.querySelectorAll("p")
+
+        document.querySelector("#input_search").classList.add("placeholderB")
+        document.querySelector("#input_search").classList.remove("placeholderW")
+
+        document.querySelectorAll(".svg").forEach((element) => {
+            console.log(element.attributes[5].value)
+            element.attributes[5].value = "#FFFFFF"
+        })
+
+        document.querySelectorAll("option").forEach((element) => {
+            element.style.color = "white"
+        })
+
+        colorAW.forEach((element) => {
+            element.classList.add("colorAB")
+            element.classList.remove("colorAW")
+        })
+
+        colorBW.forEach((element) => {
+            element.classList.add("colorBB")
+            element.classList.remove("colorBW")
+        })
+
+        p.forEach((element) => {
+            element.style.color = "white"
+        })
+
+        color = "B"
 
     }
     
-
+    console.log("Theme change")
 }
 
-darkmode.addEventListener("click", ChangeTheme)*/
+darkmode.addEventListener("click", ChangeTheme)
 
 
