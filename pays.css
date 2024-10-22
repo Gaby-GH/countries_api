@@ -82,6 +82,10 @@ a{
     align-items: center;
 }
 
+#flag{
+    height: 300px;
+}
+
 #div_detail{
     width: 46%;
 }
@@ -145,4 +149,28 @@ a{
 
 .p_country_border{
     font-weight: 300;
+}
+
+@media screen and (max-width: 375px) {
+    
+    #div_2{
+        display: flex;
+        flex-direction: column;
+    }
+
+    #flag{
+        width: 80vw;
+        height: auto;
+    }
+
+    #div_detail{
+        width: 80vw;
+    }
+
+    #div_info{
+        display: flex;
+        flex-direction: column;
+        justify-content: baseline;
+    }
+
 }
