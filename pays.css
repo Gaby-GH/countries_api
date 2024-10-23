@@ -130,6 +130,7 @@ a{
     display: flex;
     flex-direction: row;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 #p_border{
@@ -165,6 +166,7 @@ a{
 
     #div_detail{
         width: 80vw;
+        margin-top: 35px;
     }
 
     #div_info{
@@ -173,4 +175,22 @@ a{
         justify-content: baseline;
     }
 
+    #div_info_1{
+        margin-bottom: 18px;
+    }
+
+    .info_title{
+        margin-bottom: 6px;
+    }
+
+
+    #div_border{
+        width: 80vw;
+        height: auto;
+        flex-wrap: wrap;
+    }
+
+    .btn_border{
+        margin-bottom: 4px;
+    }
 }
